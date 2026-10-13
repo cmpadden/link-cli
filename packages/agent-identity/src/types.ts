@@ -48,6 +48,14 @@ export interface ClaimsSuccess {
   claims: Record<string, unknown>;
   /** RFC 7638 thumbprint of the credential's cnf.jwk holder key. */
   holderKeyThumbprint: string;
+  /**
+   * When Link last verified the email, rounded down to the UTC day. Present only
+   * when the credential discloses a valid `email_verified_at`; credentials from
+   * before that claim existed never carry it.
+   */
+  emailVerifiedAt?: Date;
+  /** The same for `phone_verified_at`. */
+  phoneVerifiedAt?: Date;
 }
 
 export interface ClaimsFailure {
